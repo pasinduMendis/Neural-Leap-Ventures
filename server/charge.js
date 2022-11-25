@@ -8,24 +8,27 @@ exports.handler = async (event, context) => {
   const email = decodeURIComponent(event.body.split("email=")[1].split("&stripeToken=")[0]);
   const stripeToken = event.body.split("stripeToken=")[1];
   const myCookie = cookie.serialize('emailHash', email);
-  console.log(stripeToken)
+  //console.log(stripeToken)
 
   try {
     const token = stripeToken;
 
-    const charge = await stripe.charges.create(
+    const {charge,error} = await stripe.charges.create(
       {
         amount: 10000,
         currency: "usd",
         description: "Down payment for first access to Breakpoints",
-        source: token,
-        billing_details:{
-            email:email,
-            name:name
-        }
+        source: "token",
       }
     );
-      console.log(charge)
+    if(error){
+        console.log("error")
+        return {
+            statusCode: 400,
+            body: error,
+          };
+    }
+    
     return {
       statusCode: 302,
       headers: {
