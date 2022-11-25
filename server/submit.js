@@ -10,25 +10,18 @@ exports.handler = async (event, context) => {
   const array = event.body.split("email=");
   const email = decodeURIComponent(array[1]);
   const myCookie = cookie.serialize('emailHash', email);
-  console.log(email)
-  console.log(array)
 
   try {
-    console.log("*1")
-    mongoose.connect("mongodb+srv://Neural-Leap-Ventures:Neural-Leap-Ventures@neural-leap-ventures.3ugshp3.mongodb.net/?retryWrites=true&w=majority",{ useNewUrlParser: true,
+    mongoose.connect(process.env.MONGO_URI,{ useNewUrlParser: true,
     useUnifiedTopology: true, useFindAndModify: false});
-    console.log("*2")
     const existingUser = await User.findOne({ email: email });
-    console.log("*3")
 
     if (existingUser) {
 
     }
 
     if (!existingUser) {
-      console.log("*4")
       const shortIdVariable = shortid.generate();
-      console.log("*5")
 
       const user = await new User({
         email: email,
