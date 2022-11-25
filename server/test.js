@@ -45,6 +45,7 @@ exports.handler = async (event, context) => {
   }
 }; */
 const shortid = require("shortid");
+const User = require("/customFunctions/userModel");
 //var mongoose = require('mongoose');
 
 exports.handler = async (event, context) => {
