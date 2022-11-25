@@ -19,6 +19,10 @@ exports.handler = async (event, context) => {
         currency: "usd",
         description: "Down payment for first access to Breakpoints",
         source: token,
+        billing_details:{
+            email:email,
+            name:name
+        }
       }
     );
       console.log(charge)
