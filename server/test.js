@@ -1,4 +1,4 @@
-
+/* 
 const User = require("./customFunctions/userModel");
 const shortid = require("shortid");
 const cookie = require('cookie');
@@ -43,4 +43,11 @@ exports.handler = async (event, context) => {
     };
 
   }
-};
+}; */
+exports.handler = async (event, context) => {
+    console.log(event.body)
+    return {
+        statusCode: 200,
+        body: "err",
+      };
+}
