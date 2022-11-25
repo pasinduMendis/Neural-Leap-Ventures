@@ -1,5 +1,5 @@
 const requestIp = require('request-ip');
-const mongoose=require('mongoose')
+//const mongoose=require('mongoose')
 const bizSdk = require('facebook-nodejs-business-sdk');
 const EventRequest = bizSdk.EventRequest;
 const UserData = bizSdk.UserData;
