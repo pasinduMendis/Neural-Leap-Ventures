@@ -45,7 +45,7 @@ exports.handler = async (event, context) => {
   }
 }; */
 const shortid = require("shortid");
-const mongoose = require("mongoose");
+import mongoose from 'mongoose'
 
 exports.handler = async (event, context) => {
     //const existingUser = await User.findOne({ email: "email" });
