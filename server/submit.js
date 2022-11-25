@@ -4,6 +4,7 @@ const shortid = require("shortid");
 const cookie = require('cookie');
 
 exports.handler = async (event, context) => {
+  console.log("****")
   console.log(event.body)
   const array = event.body.split("email=");
   const email = decodeURIComponent(array[1]);
