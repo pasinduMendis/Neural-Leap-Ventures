@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
-require("./customFunctions/userModel");
-const User = mongoose.model("users");
+const User = require("./customFunctions/userModel");
 const shortid = require("shortid");
 const cookie = require('cookie');
 
