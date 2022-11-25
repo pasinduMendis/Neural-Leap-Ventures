@@ -1,9 +1,9 @@
-/* const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 const User = require("./customFunctions/userModel");
-const shortid = require("shortid");
-const cookie = require('cookie'); */
+//const shortid = require("shortid");
+const cookie = require('cookie');
 
-/* exports.handler = async (event, context) => {
+exports.handler = async (event, context) => {
   console.log(event.body)
   const array = event.body.split("email=");
   const email = decodeURIComponent(array[1]);
@@ -18,11 +18,11 @@ const cookie = require('cookie'); */
     }
 
     if (!existingUser) {
-      const shortIdVariable = shortid.generate();
+      //const shortIdVariable = shortid.generate();
 
       const user = await new User({
         email: email,
-        referralId: shortIdVariable,
+        referralId: "shortIdVariable",
         numberOfReferrals: 0
       }).save();
     }
@@ -44,13 +44,5 @@ const cookie = require('cookie'); */
       body: err,
     };
   }
-}; */
-exports.handler = async (event, context) => {
-  console.log(event.body)
-  return {
-    statusCode: 200,
-    body: "Success",
-  };
-
-}
+};
 
