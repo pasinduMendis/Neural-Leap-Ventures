@@ -6,6 +6,7 @@ const cookie = require('cookie');
 
 exports.handler = async (event, context) => {
 
+  console.log(event.body)
   const array = event.body.split("email=");
   const email = decodeURIComponent(array[1]);
   const myCookie = cookie.serialize('emailHash', email);
