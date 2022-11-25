@@ -10,4 +10,5 @@ const userSchema = new Schema({
     referrals: [{ idOfReferral: String }],
 });
 
-mongoose.model('users', userSchema);
+var User=mongoose.model('Users', userSchema);
+module.exports = User;
