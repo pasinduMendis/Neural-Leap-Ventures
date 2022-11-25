@@ -36,6 +36,5 @@ exports.handler = async (event, context) => {
       statusCode: 400,
       body: err,
     };
-
   }
 };
