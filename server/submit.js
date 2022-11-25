@@ -1,15 +1,18 @@
-/* 
-const User = require("./customFunctions/userModel");
+const mongoose = require("mongoose");
+require("./customFunctions/userModel");
+const User = mongoose.model("users");
 const shortid = require("shortid");
 const cookie = require('cookie');
 
 exports.handler = async (event, context) => {
-  console.log(event.body)
+
   const array = event.body.split("email=");
   const email = decodeURIComponent(array[1]);
   const myCookie = cookie.serialize('emailHash', email);
 
   try {
+    mongoose.connect("mongodb+srv://Neural-Leap-Ventures:Neural-Leap-Ventures@neural-leap-ventures.3ugshp3.mongodb.net/?retryWrites=true&w=majority");
+
     const existingUser = await User.findOne({ email: email });
 
     if (existingUser) {
@@ -25,6 +28,7 @@ exports.handler = async (event, context) => {
         numberOfReferrals: 0
       }).save();
     }
+    mongoose.disconnect();
 
     return {
       statusCode: 302,
@@ -43,16 +47,4 @@ exports.handler = async (event, context) => {
     };
 
   }
-}; */
-const shortid = require("shortid");
-const User = require("./customFunctions/userModel");
-var mongoose = require('mongoose');
-
-exports.handler = async (event, context) => {
-    //const existingUser = await User.findOne({ email: "email" });
-    console.log(event.body)
-    return {
-        statusCode: 200,
-        body: "err",
-      };
-}
+};
