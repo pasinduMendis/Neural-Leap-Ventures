@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const User = require("./customFunctions/userModel");
+//const User = require("./customFunctions/userModel");
 //const shortid = require("shortid");
 const cookie = require('cookie');
 
@@ -11,7 +11,7 @@ exports.handler = async (event, context) => {
 
   try {
     mongoose.connect("mongodb+srv://Neural-Leap-Ventures:Neural-Leap-Ventures@neural-leap-ventures.3ugshp3.mongodb.net/?retryWrites=true&w=majority");
-    const existingUser = await User.findOne({ email: email });
+    const existingUser = "await User.findOne({ email: email });"
 
     if (existingUser) {
 
@@ -20,11 +20,11 @@ exports.handler = async (event, context) => {
     if (!existingUser) {
       //const shortIdVariable = shortid.generate();
 
-      const user = await new User({
+      /* const user = await new User({
         email: email,
         referralId: "shortIdVariable",
         numberOfReferrals: 0
-      }).save();
+      }).save(); */
     }
     mongoose.disconnect();
 
