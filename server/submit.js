@@ -8,9 +8,10 @@ exports.handler = async (event, context) => {
 
   console.log(event.body)
   const array = event.body.split("email=");
-  const email = event.body.email
+  const email = decodeURIComponent(array[1]);
   const myCookie = cookie.serialize('emailHash', email);
   console.log(email)
+  console.log(array)
 
   try {
     console.log("*1")
