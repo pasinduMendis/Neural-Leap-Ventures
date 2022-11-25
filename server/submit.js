@@ -1,9 +1,9 @@
-const mongoose = require("mongoose");
+/* const mongoose = require("mongoose");
 const User = require("./customFunctions/userModel");
 const shortid = require("shortid");
-const cookie = require('cookie');
+const cookie = require('cookie'); */
 
-exports.handler = async (event, context) => {
+/* exports.handler = async (event, context) => {
   console.log(event.body)
   const array = event.body.split("email=");
   const email = decodeURIComponent(array[1]);
@@ -44,5 +44,13 @@ exports.handler = async (event, context) => {
       body: err,
     };
   }
-};
+}; */
+exports.handler = async (event, context) => {
+  console.log(event.body)
+  return {
+    statusCode: 200,
+    body: "Success",
+  };
+
+}
 
