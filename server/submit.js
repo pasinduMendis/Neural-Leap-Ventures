@@ -11,7 +11,6 @@ exports.handler = async (event, context) => {
 
   try {
     mongoose.connect("mongodb+srv://Neural-Leap-Ventures:Neural-Leap-Ventures@neural-leap-ventures.3ugshp3.mongodb.net/?retryWrites=true&w=majority");
-
     const existingUser = await User.findOne({ email: email });
 
     if (existingUser) {
