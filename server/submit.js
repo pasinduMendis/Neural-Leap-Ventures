@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+//const mongoose = require("mongoose");
 //const User = require("./customFunctions/userModel");
 //const shortid = require("shortid");
 /* const cookie = require('cookie'); */
@@ -10,7 +10,7 @@ exports.handler = async (event, context) => {
 /*   const myCookie = cookie.serialize('emailHash', email); */
 
   try {
-    mongoose.connect("mongodb+srv://Neural-Leap-Ventures:Neural-Leap-Ventures@neural-leap-ventures.3ugshp3.mongodb.net/?retryWrites=true&w=majority");
+    //mongoose.connect("mongodb+srv://Neural-Leap-Ventures:Neural-Leap-Ventures@neural-leap-ventures.3ugshp3.mongodb.net/?retryWrites=true&w=majority");
     const existingUser = "await User.findOne({ email: email });"
 
     if (existingUser) {
