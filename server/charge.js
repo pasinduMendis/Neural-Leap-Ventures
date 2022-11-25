@@ -1,4 +1,4 @@
-const stripe = require("stripe")('sk_test_51Lrnh3Hn5HPNBT2DHgZxIB7EYtwPMCRUxe9wEUc5LXQbDRuRRKQ7pBJccxVCGoOytN4UAtfiQKG6nOgxekqUI4nT00fYlNuUwH');
+//const stripe = require("stripe")('sk_test_51Lrnh3Hn5HPNBT2DHgZxIB7EYtwPMCRUxe9wEUc5LXQbDRuRRKQ7pBJccxVCGoOytN4UAtfiQKG6nOgxekqUI4nT00fYlNuUwH');
 const cookie = require('cookie');
 
 exports.handler = async (event, context) => {
@@ -11,14 +11,14 @@ exports.handler = async (event, context) => {
   try {
     const token = stripeToken;
 
-    const charge = await stripe.charges.create(
+    /* const charge = await stripe.charges.create(
       {
         amount: 10000,
         currency: "usd",
         description: "Down payment for first access to Breakpoints",
         source: token,
       }
-    );
+    ); */
 
     return {
       statusCode: 302,
