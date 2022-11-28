@@ -1,12 +1,11 @@
 const requestIp = require('request-ip');
-//const mongoose=require('mongoose')
 const bizSdk = require('facebook-nodejs-business-sdk');
 const EventRequest = bizSdk.EventRequest;
 const UserData = bizSdk.UserData;
 const ServerEvent = bizSdk.ServerEvent;
 const cookie = require('cookie');
-const access_token = "process.env.FACEBOOK_ACCESS_TOKEN";
-const pixel_id = "process.env.FACEBOOK_PIXEL_ID";
+const access_token = process.env.FACEBOOK_ACCESS_TOKEN;
+const pixel_id = process.env.FACEBOOK_PIXEL_ID;
 const api = bizSdk.FacebookAdsApi.init(access_token);
 
 exports.handler = async (event, context) => {
