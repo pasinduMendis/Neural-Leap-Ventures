@@ -16,7 +16,7 @@ exports.handler = async (event, context) => {
       {
         amount: 10000,
         currency: "usd",
-        description: "Down payment for first access to Breakpoints",
+        description: "Down payment for first access to web-23",
         source: token,
       }
     );
