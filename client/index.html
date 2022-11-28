@@ -197,7 +197,7 @@ margin: 0rem !important;
       <div class="container-large_navbar">
         <a href="#" class="brand-logo w-nav-brand"><img src="images/logo.svg" loading="lazy" alt="" class="logo"></a>
         <nav role="navigation" class="nav_menu w-nav-menu">
-          <a href="#" class="button w-button">Gain Early Access</a>
+          <a id="eventOne" href="#" class="button w-button">Gain Early Access</a>
         </nav>
         <div class="menu_button w-nav-button">
           <div class="w-icon-nav-menu"></div>
@@ -217,7 +217,7 @@ margin: 0rem !important;
                   </div>
                   <div class="form-wrap max-width-medium">
                     <div class="form_component w-form">
-                      <form id="wf-form-Form" name="wf-form-Form" data-name="Form"  class="form_form" action="/.netlify/functions/submit" method="post">
+                      <form id="event3" name="wf-form-Form" data-name="Form"  class="form_form" action="/.netlify/functions/submit" method="post">
                         <div class="form_field-wrapper"><input type="text" class="form_input w-input" maxlength="256" name="email" data-name="First Name 2" placeholder="Enter your email" id="email-2" required>
                           <input type="submit" data-wait="Please wait..." value="Submit" class="button is-form-submit w-button"></div>
                       </form>
@@ -284,11 +284,35 @@ margin: 0rem !important;
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script>
-  //email submit
-  function formSubmit(){
-    var email=document.getElementById("email-2").value
-    console.log(email)
-  }
-</script>
+    //Server Side Tracking Function
+    async function serverSideTracking(eventName, eventUrl, eventId) {
+      await axios
+        .post(
+          "/server-side-tracking",
+          {
+            eventName: eventName,
+            eventUrl: eventUrl,
+            eventId: eventId
+          }
+        )
+        .then((response) => {
+          console.log("Success: " + response.data);
+        })
+        .catch((err) => console.log("Failed: " + err));
+    }
+    //Index Page Events
+    window.onload = serverSideTracking("Index Page View", window.location.href, "1");
+    var eventOne = document.getElementById("eventOne");
+    eventOne.addEventListener("click", function () {
+      serverSideTracking("Index Page Gain Early Access Button Click", window.location.href, "2");
+      //fbq('trackCustom', 'Index Page Get Early Access Button Click', { eventID: '2' });
+    });
+    
+    var event3 = document.getElementById("event3");
+    event3.addEventListener("submit", function () {
+      serverSideTracking("Index Page Submit Button Click", window.location.href, "3");
+      //fbq('trackCustom', 'Index Page Submit Button Click', { eventID: '3' });
+    });
+  </script>
 </body>
 </html>
