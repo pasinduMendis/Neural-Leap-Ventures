@@ -4,6 +4,7 @@ const EventRequest = bizSdk.EventRequest;
 const UserData = bizSdk.UserData;
 const ServerEvent = bizSdk.ServerEvent;
 const cookie = require('cookie');
+
 const access_token = process.env.FACEBOOK_ACCESS_TOKEN;
 const pixel_id = process.env.FACEBOOK_PIXEL_ID;
 const api = bizSdk.FacebookAdsApi.init(access_token);
@@ -44,7 +45,7 @@ exports.handler = async (event, context) => {
 
     const eventsData = [serverEvent];
     const eventRequest = (new EventRequest(access_token, pixel_id))
-      //.setTestEventCode("TEST9001")
+      //.setTestEventCode("TEST21018")
       .setEvents(eventsData);
 
     const response = await eventRequest.execute()
@@ -56,7 +57,6 @@ exports.handler = async (event, context) => {
 
   } catch (err) {
 
-    console.log("11");
     console.log("Error: " + err);
     return {
       statusCode: 400,
