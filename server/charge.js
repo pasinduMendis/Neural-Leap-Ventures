@@ -24,7 +24,7 @@ exports.handler = async (event, context) => {
     return {
       statusCode: 302,
       headers: {
-        "Location": "https://breakpoints.ai/thank-you-early-access",
+        "Location": "/thank-you-early-access",
         'Set-Cookie': myCookie
       },
       body: "Success",
