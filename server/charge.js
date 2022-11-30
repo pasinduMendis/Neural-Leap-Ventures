@@ -2,10 +2,8 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 // eslint-disable-next-line import/no-anonymous-default-export
 exports.handler = async (event, context) => {
-  console.log("*****")
 
   if (event.httpMethod === "POST") {
-    console.log("POST")
     try {
 
       const paymentIntent = await stripe.paymentIntents.create({
