@@ -416,16 +416,13 @@ margin: 0rem !important;
     form.addEventListener("submit", async function (event) {
       event.preventDefault();
 
-      var email = document.getElementById("name-payment").value; 
-      var name = document.getElementById("email-payment").value; 
-      console.log(email)
-      console.log(name)
+      var name = document.getElementById("name-payment").value; 
+      var email = document.getElementById("email-payment").value; 
 
       const billingDetails = {
         name: name,
         email: email,
       };
-      console.log(billingDetails)
 
       const charge = await stripe.createPaymentMethod({
         type: "card",
