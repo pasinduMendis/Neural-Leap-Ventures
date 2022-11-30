@@ -1,40 +1,32 @@
-const stripe = require("stripe")('sk_test_51Lrnh3Hn5HPNBT2DHgZxIB7EYtwPMCRUxe9wEUc5LXQbDRuRRKQ7pBJccxVCGoOytN4UAtfiQKG6nOgxekqUI4nT00fYlNuUwH');
-const cookie = require('cookie');
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
+// eslint-disable-next-line import/no-anonymous-default-export
 exports.handler = async (event, context) => {
 
-  const name = event.body.split("name=")[1].split("&email=")[0].replaceAll('+', ' ');
-  const email = decodeURIComponent(event.body.split("email=")[1].split("&stripeToken=")[0]);
-  const stripeToken = event.body.split("stripeToken=")[1];
-  const myCookie = cookie.serialize('emailHash', email);
-  //console.log(stripeToken)
+  if (event.httpMethod === "POST") {
+    try {
 
-  try {
-    const token = stripeToken;
-
-    const charge = await stripe.charges.create(
-      {
+      const paymentIntent = await stripe.paymentIntents.create({
         amount: 10000,
-        currency: "usd",
-        description: "Down payment for first access to web-23",
-        source: token,
-      }
-    );
-      //console.log(charge)
-    return {
-      statusCode: 302,
-      headers: {
-        "Location": "/thank-you",
-        'Set-Cookie': myCookie
-      },
-      body: "Success",
-    };
-
-  } catch (err) {
-
+        currency: "usd"
+      });
+      console.log(paymentIntent)
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ clientSecret: paymentIntent.client_secret }),
+      };
+      //res.status(200).send(paymentIntent.client_secret);
+    } catch (err) {
+      return {
+        statusCode: 500,
+        body: JSON.stringify({ message: err.message }),
+      };
+      //res.status(500).json({ statusCode: 500, message: err.message });
+    }
+  } else {
     return {
       statusCode: 400,
-      body: err,
+      body: JSON.stringify({ message: "METHOD NOT ALLOWED" }),
     };
   }
 };

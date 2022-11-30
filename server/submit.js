@@ -6,7 +6,7 @@ const cookie = require('cookie');
 
 exports.handler = async (event, context) => {
 
-  console.log(event.body)
+  //console.log(event.body)
   const array = event.body.split("email=");
   const email = decodeURIComponent(array[1]);
   const myCookie = cookie.serialize('emailHash', email);
@@ -34,7 +34,7 @@ exports.handler = async (event, context) => {
     return {
       statusCode: 302,
       headers: {
-        "Location": "https://calm-tartufo-3b38f7.netlify.app/early-access",
+        "Location": "/early-access",
         'Set-Cookie': myCookie
       },
       body: "Success",
