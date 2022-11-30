@@ -359,10 +359,10 @@ margin: 0rem !important;
                 </div><input type="submit" id="eventSix" data-wait="Please wait..." value="Submit" class="button is-form-submit popup-btn w-button">
               </form>
               <p id="card-errors" class="paragraph-49"></p>
-              <div class="form_message-success w-form-done">
+              <div class="form_message-success">
                 <div></div>
               </div>
-              <div class="form_message-error w-form-fail">
+              <div class="form_message-error">
                 <div></div>
               </div>
             </div>
@@ -418,6 +418,8 @@ margin: 0rem !important;
 
       var email = document.getElementById("name-payment").value; 
       var name = document.getElementById("email-payment").value; 
+      console.log(email)
+      console.log(name)
 
       const billingDetails = {
         name: name,
