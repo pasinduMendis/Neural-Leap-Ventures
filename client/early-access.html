@@ -425,6 +425,7 @@ margin: 0rem !important;
         name: name,
         email: email,
       };
+      console.log(billingDetails)
 
       const charge = await stripe.createPaymentMethod({
         type: "card",
