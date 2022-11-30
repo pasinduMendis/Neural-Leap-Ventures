@@ -440,7 +440,7 @@ margin: 0rem !important;
       await axios
         .post("/.netlify/functions/charge", {})
         .then(async (response) => {
-          //console.log(response)
+          console.log(response)
           const { error } = await stripe.confirmCardPayment(
             response.data.clientSecret,
             {
