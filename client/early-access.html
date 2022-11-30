@@ -822,7 +822,7 @@ a,
           }
 
           await axios
-            .post("/charge", {})
+            .post("/.netlify/functions/charge", {})
             .then(async (response) => {
               console.log(response);
               const { error } = await stripe.confirmCardPayment(
